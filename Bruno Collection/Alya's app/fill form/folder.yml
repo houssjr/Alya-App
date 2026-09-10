@@ -1,0 +1,7 @@
+info:
+  name: fill form
+  type: folder
+  seq: 2
+
+request:
+  auth: inherit

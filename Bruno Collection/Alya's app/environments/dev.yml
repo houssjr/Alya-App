@@ -1,0 +1,4 @@
+name: dev
+variables:
+  - name: token
+    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzg4Nzg3NzUyLCJleHAiOjE3ODg3OTQ5NTJ9.eR0kxye17LVypwvQw5QXuVLjiaOVlb_Ggpm3ou7NeDw
