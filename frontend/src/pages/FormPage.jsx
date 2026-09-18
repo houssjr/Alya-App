@@ -237,7 +237,7 @@ export default function FormPage() {
             <button type="button" className="secondary-btn" onClick={() => navigate('/')}>
               Retour
             </button>
-            <button type="submit" className="primary-btn" disabled={loading}>
+            <button data-testid="form-submit" type="submit" className="primary-btn" disabled={loading}>
               {loading ? 'Envoi...' : 'Soumettre le formulaire'}
             </button>
           </div>

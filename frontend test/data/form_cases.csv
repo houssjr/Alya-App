@@ -1,0 +1,2 @@
+*** Test Cases ***,${first_name},${last_name},${email},${department},${experience},${role},${interests},${newsletter},${comments}
+Submit Robot Framework form,Robot,Framework,robot.framework@example.com,IT,Intermédiaire,Développeur,Technologie|Formation,true,Frontend smoke test submitted by Robot Framework.

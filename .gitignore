@@ -1,5 +1,14 @@
 node_modules/
 dist/
+target/
+frontend test/.venv/
+frontend test/reports/
+frontend test/reports-parallel/
+frontend test/reports*/
+frontend test/__pycache__/
+frontend test/**/__pycache__/
+frontend test/.pabotsuitenames
+*.pyc
 *.db
 *.db-shm
 *.db-wal

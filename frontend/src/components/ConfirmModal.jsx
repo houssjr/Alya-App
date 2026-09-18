@@ -11,7 +11,7 @@ export default function ConfirmModal({ open, title, message, onConfirm, onCancel
           <button type="button" className="secondary-btn" onClick={onCancel}>
             Annuler
           </button>
-          <button type="button" className="primary-btn" onClick={onConfirm}>
+          <button data-testid="confirm-submit" type="button" className="primary-btn" onClick={onConfirm}>
             Confirmer
           </button>
         </div>

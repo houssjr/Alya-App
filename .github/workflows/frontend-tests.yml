@@ -1,0 +1,73 @@
+name: Frontend Robot Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  frontend-robot-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: |
+            backend/package-lock.json
+            frontend/package-lock.json
+
+      - name: Install backend dependencies
+        working-directory: backend
+        run: npm ci
+
+      - name: Install frontend dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Install Robot Framework dependencies
+        working-directory: frontend test
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          rfbrowser init
+
+      - name: Start backend
+        shell: bash
+        run: |
+          (cd backend && node server.js > ../backend.log 2>&1 &)
+
+      - name: Start frontend
+        shell: bash
+        run: |
+          (cd frontend && npm run dev > ../frontend.log 2>&1 &)
+
+      - name: Wait for local applications
+        run: npx --yes wait-on http://127.0.0.1:3001/api/health http://127.0.0.1:5173 --timeout 30000
+
+      - name: Run Robot Framework tests
+        working-directory: frontend test
+        env:
+          BASE_URL: http://127.0.0.1:5173
+          API_URL: http://127.0.0.1:3001
+          HEADLESS: 'true'
+        run: pabot --outputdir reports --processes 2 tests
+
+      - name: Upload Robot reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-robot-reports
+          path: frontend test/reports/

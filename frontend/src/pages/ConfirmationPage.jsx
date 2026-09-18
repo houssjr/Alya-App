@@ -52,7 +52,7 @@ export default function ConfirmationPage() {
       <div className="card">
         <div className="page-header">
           <h1>Confirmation</h1>
-          <button type="button" className="secondary-btn" onClick={handleLogout}>
+          <button data-testid="logout" type="button" className="secondary-btn" onClick={handleLogout}>
             Déconnexion
           </button>
         </div>
@@ -60,18 +60,20 @@ export default function ConfirmationPage() {
 
         {submission ? (
           <div className="submission">
-            <div className="success">Votre formulaire a bien été soumis.</div>
+            <div data-testid="confirmation-success" className="success">Votre formulaire a bien été soumis.</div>
 
             <div className="meta">Soumis le : {new Date(submission.submitted_at).toLocaleString()}</div>
 
-            <div><strong>Nom :</strong> {submission.first_name} {submission.last_name}</div>
-            <div><strong>Email :</strong> {submission.email}</div>
-            <div><strong>Département :</strong> {submission.department}</div>
-            <div><strong>Expérience :</strong> {submission.experience}</div>
-            <div><strong>Rôle :</strong> {submission.role}</div>
-            <div><strong>Centres d'intérêt :</strong> {submission.interests?.join(', ') || 'Aucun'}</div>
-            <div><strong>Newsletter :</strong> {submission.newsletter ? 'Oui' : 'Non'}</div>
-            <div><strong>Commentaires :</strong> {submission.comments || 'Aucun commentaire'}</div>
+            <div data-testid="confirmation-details">
+              <div><strong>Nom :</strong> {submission.first_name} {submission.last_name}</div>
+              <div><strong>Email :</strong> {submission.email}</div>
+              <div><strong>Département :</strong> {submission.department}</div>
+              <div><strong>Expérience :</strong> {submission.experience}</div>
+              <div><strong>Rôle :</strong> {submission.role}</div>
+              <div><strong>Centres d'intérêt :</strong> {submission.interests?.join(', ') || 'Aucun'}</div>
+              <div><strong>Newsletter :</strong> {submission.newsletter ? 'Oui' : 'Non'}</div>
+              <div><strong>Commentaires :</strong> {submission.comments || 'Aucun commentaire'}</div>
+            </div>
           </div>
         ) : null}
       </div>

@@ -89,7 +89,7 @@ export default function LoginPage() {
         <p className="subtitle">Accédez à votre espace sécurisé pour remplir et soumettre le formulaire.</p>
 
         <form onSubmit={handleSubmit}>
-          {error ? <div className="error">{error}</div> : null}
+          {error ? <div data-testid="login-error" className="error">{error}</div> : null}
 
           <div className="field">
             <label htmlFor="username">Nom d'utilisateur</label>
@@ -118,7 +118,7 @@ export default function LoginPage() {
           </div>
 
           <div className="actions" style={{ marginTop: '20px' }}>
-            <button type="submit" className="primary-btn" style={{ width: '100%' }} disabled={loading}>
+            <button data-testid="login-submit" type="submit" className="primary-btn" style={{ width: '100%' }} disabled={loading}>
               {loading ? 'Connexion...' : 'Se connecter'}
             </button>
           </div>

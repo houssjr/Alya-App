@@ -106,3 +106,18 @@ Pour renforcer la qualité de ce prompt pour un futur agent ou développeur, on 
 
 ## 7. Exemple de prompt amélioré pour reproduction
 "Crée une application web locale en React + Node.js + Express + SQLite. Le frontend doit se connecter sur http://localhost:5173 et le backend sur http://localhost:3001. L’utilisateur se connecte avec admin / admin123. Après connexion, le backend renvoie un JWT. Le frontend stocke le token dans le localStorage et protège les routes /form et /confirmation. Le formulaire contient des inputs, des listes déroulantes, des boutons radios, des checklists et une case à cocher. Les données sont validées côté backend avant insertion dans une table SQLite nommée form_submissions. Une fois validée, la soumission est enregistrée, puis l’utilisateur est redirigé vers une page de confirmation qui appelle GET /api/forms/latest avec le token JWT pour afficher la dernière soumission. Ajoute des toasts pour les messages de succès/erreur et une modale de confirmation avant soumission. Le projet doit fonctionner en local, sans dépendance cloud, et ne doit pas inclure de tests automatisés dans cette version."
+
+## 8. Automatisation frontend
+
+Le projet contient un module dédié dans `frontend test` pour automatiser le parcours navigateur avec :
+- Robot Framework
+- Browser Library basée sur Playwright
+- Python
+- Page Object Model avec fichiers `.resource`
+- DataDriver et données CSV
+- Variables d’environnement pour les URLs et identifiants
+- Rapports HTML/XML natifs Robot Framework
+- Pabot pour l’exécution parallèle
+- GitHub Actions pour la CI/CD
+
+Les instructions détaillées sont disponibles dans `frontend test/README.md` et `frontend test/PROMPT_FRONTEND_TEST.md`.
